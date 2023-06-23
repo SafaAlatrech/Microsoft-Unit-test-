@@ -54,7 +54,10 @@ namespace IdealWeightCalculator
             return results;
         }
 
+        public bool Validate()
+        {
+            return Sex == 'm' || Sex == 'w';
 
-
+        }
     }
 }
