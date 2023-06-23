@@ -253,15 +253,15 @@ namespace IdealWeightCalculator.Tests
         }
 
         [DataTestMethod]
-        [DataRow(175,'w',62.5)]
-        [DataRow(167,'m',62.75)]
-        [DataRow(182,'m',74)]
-        public void Working_with_Data_Driven_Tests(double height,  char sex, double expeceted) 
+        [DataRow(175, 'w', 62.5)]
+        [DataRow(167, 'm', 62.75)]
+        [DataRow(182, 'm', 74)]
+        public void Working_with_Data_Driven_Tests(double height, char sex, double expeceted)
         {
             WeightCalculator weightCalculator = new WeightCalculator
             {
                 Height = height,
-                Sex= sex
+                Sex = sex
 
             };
 
@@ -270,9 +270,17 @@ namespace IdealWeightCalculator.Tests
             actual.Should().Be(expeceted);
         }
 
+        public static List<object[]> TestCases() 
+        {
+            return new List<object[]>
+            {
+                new object[] {175,'w',62.5},
+                new object[] {167,'m',62.75},
+                new object[] {182,'m',74}
+            };
+        }
 
-
-    }
+}
 
 
 }
