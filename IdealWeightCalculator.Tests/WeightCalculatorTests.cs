@@ -270,6 +270,7 @@ namespace IdealWeightCalculator.Tests
             actual.Should().Be(expeceted);
         }
 
+        // Working with Dynamic Data Attribute in DDT 
         public static List<object[]> TestCases() 
         {
             return new List<object[]>
@@ -280,7 +281,25 @@ namespace IdealWeightCalculator.Tests
             };
         }
 
-}
+        [DataTestMethod]
+        [DynamicData(nameof(TestCases),DynamicDataSourceType.Method)]
+        public void Working_with_Data_Driven(double height, char sex, double expeceted)
+        {
+            WeightCalculator weightCalculator = new WeightCalculator
+            {
+                Height = height,
+                Sex = sex
+
+            };
+
+            var actual = weightCalculator.GetIdealBodyWeight();
+
+            actual.Should().Be(expeceted);
+        }
+
+
+
+    }
 
 
 }
